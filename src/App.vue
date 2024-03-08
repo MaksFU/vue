@@ -110,7 +110,7 @@
       </div>
 
       <!-- Текст задачи -->
-      <v-text-area clearable label="Задача" variant="solo-inverted" v-model="notificationText"></v-text-area>
+      <v-textarea clearable label="Задача" variant="solo-inverted" v-model="notificationText"></v-textarea>
 
       <v-btn @click="CreateSingleNotification()">Отправить</v-btn>
       <v-btn @click="s()">2</v-btn>
@@ -141,7 +141,7 @@
 
 <script setup>
 import { VSelect } from 'vuetify/components/VSelect'
-import { VTextArea } from 'vuetify/components/VTextarea' //локал
+import { VTextarea } from 'vuetify/components/VTextarea' //локал
 
 
 import { VTextField } from 'vuetify/components/VTextField'
