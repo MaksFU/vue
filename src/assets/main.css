@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #2c2f33;
+  color: #c8d1d9;
+  height: 100vh;
+  /* display: flex;
+  align-items: center;
+  border: 2px solid blue; */
+  /* justify-content: center;
+  align-items: center;
+  display:flex; */
+}
