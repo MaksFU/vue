@@ -225,10 +225,10 @@ const receiverUserId = ref();
 
 
 onMounted(async () => {
-  // await GetDefaultInfos()
-  // var WebApp = window.Telegram.WebApp;
+  await GetDefaultInfos()
+  var WebApp = window.Telegram.WebApp;
 
-  // WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+  WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
 })
 
 const addTime = () => {
