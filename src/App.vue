@@ -141,7 +141,6 @@
 
 <script setup>
 import { VSelect } from 'vuetify/components/VSelect'
-//import { VTextarea } from 'vuetify/components/VTextArea' //локал
 import { VTextarea } from 'vuetify/components/VTextarea' //локал
 
 
