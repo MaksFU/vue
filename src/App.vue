@@ -229,7 +229,7 @@ onMounted(async () => {
   var WebApp = window.Telegram.WebApp;
   
   notificationText.value += "\n"
-  notificationText.value += WebApp.initData.chat
+  notificationText.value += WebApp.initData.user.id
 
   WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
 })
