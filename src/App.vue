@@ -230,7 +230,9 @@ onMounted(async () => {
   
   notificationText.value += "\n"
   notificationText.value += WebApp.initData.toString()
-
+  
+  notificationText.value += "\n"
+  notificationText.value += WebApp.initData.user.toString()
   WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
 })
 
