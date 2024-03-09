@@ -223,18 +223,18 @@ const receiverUserId = ref();
 const hostUrl = ref("http://localhost:8080");
 
 // Id юзера в телеграм
-const currentUserId = ref();
+const initData = ref();
 const webApp = window.Telegram.WebApp;
 
 onMounted(async () => {
   await GetDefaultInfos()
 
-  currentUserId.value = webApp.initDataUnsafe.user.id;
+  initData.value = webApp.initData;
   
-  notificationText.value += "\n";
-  notificationText.value += webApp.initDataUnsafe.user.id.toString()
-  
-  WebApp.showAlert(`Добро пожаловать, @${webApp.WebAppUser.username}.`);
+  notificationText.value += "";
+  notificationText.value += webApp.initData
+  webApp.MainButton.show()
+  webApp.showAlert(`Добро пожаловать, @${webApp.WebAppUser.username}.`);
 })
 
 const addTime = () => {
@@ -246,7 +246,7 @@ const addTime = () => {
 };
 
 const s = () => {
-  webApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+  webApp.showAlert(`Добро пожаловать, @${webApp.WebAppUser.username}.`);
 };
 
 const removeTime = (index) => {
