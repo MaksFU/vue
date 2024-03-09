@@ -220,13 +220,14 @@ const selectedTime = ref(null);
 
 const selectUsers = ref();
 const receiverUserId = ref();
-// const hostUrl = ref("http://localhost:8080");
+const hostUrl = ref("http://localhost:8080");
 
 
 
 onMounted(async () => {
   await GetDefaultInfos()
   var WebApp = window.Telegram.WebApp;
+  console.log(WebApp.initData);
 
   WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
 })
