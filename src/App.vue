@@ -2,6 +2,13 @@
   <v-app>
     <div class="w-4/5 m-auto flex flex-column gap-y-5 mt-5 h-4/5">
 
+      <!-- Выбор получателя -->
+      <div class="flex flex-row gap-x-5">
+        <v-select clearable label="Адресат" :items="selectUsers" item-value="userId" item-title="userName"
+                  v-model="selectedUser" :hide-details="true">
+        </v-select>
+      </div>
+      
       <!-- Выбор типа уведомления -->
       <div class="flex flex-row gap-x-5">
         <v-select clearable label="Тип уведомления" :items="selectNotificationTypes" item-value="notificationType" item-title="text"
@@ -113,7 +120,7 @@
       <v-textarea clearable label="Задача" variant="solo-inverted" v-model="notificationText"></v-textarea>
 
       <v-btn @click="CreateSingleNotification()">Отправить</v-btn>
-      <v-btn @click="s()">2</v-btn>
+<!--      <v-btn @click="s()">2</v-btn>-->
 
       <!-- <v-bottom-navigation v-model="value">
     <v-btn value="recent">
@@ -177,6 +184,10 @@ const selectNotificationTypes = ref();
 // Выбранный тип уведомления
 const selectedNotificationType = ref();
 
+// Адресаты для выбора
+const selectUsers = ref();
+// Выбранный адресат
+const selectedUser = ref();
 
 const dest = ref('Минут');
 
@@ -211,15 +222,13 @@ const numberInterval = ref(4);
 
 
 // Текст уведомления
-const notificationText = ref("Текст");
+const notificationText = ref();
 
 
 const times = ref([]);
 const selectedTime = ref(null);
 
 
-const selectUsers = ref();
-const receiverUserId = ref();
 const hostUrl = ref("http://localhost:8080");
 
 // Id юзера в телеграм
@@ -258,14 +267,18 @@ const CreateSingleNotification = async () => {
 var data = {
     text: notificationText.value,
     dates: singleDates.value,
-    creatorId: 454,
-    receiverId: 454
+    initData: "query_id=AAG2Qb0nAAAAALZBvSdQSUug&user=%7B%22id%22%3A666714550%2C%22first_name%22%3A%22Maksim_Khr%22%2C%22last_name%22%3A%22%E2%98%94%22%2C%22username%22%3A%22maksim_khr%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1709973239&hash=7b8b9e1b35bac9ab2c0c2388556caa5a0e77f6e74ab38708ec14b6a1d98b95c5",
   };
 
  await axios.post(hostUrl.value + '/notification/create-single-notification', data)
+     .then(response => {
+       webApp.close()
+     })
   .catch(function (error) {
     console.log(error);
   });
+  
+ 
 };
 
 
@@ -273,9 +286,12 @@ const GetDefaultInfos = async () => {
 
  await axios.get(hostUrl.value + '/notification/default-fields')
     .then(response => {
-      //selectUsers.value = response.data.notificationTypes
-      
+      selectUsers.value = response.data.users
+      selectedUser.value = response.data.users[0]
+
       selectNotificationTypes.value = response.data.notificationTypes
+      selectedNotificationType.value = response.data.notificationTypes[0]
+      
       selectIntervals.value = response.data.intervals
       daysRepeatTypes.value = response.data.daysRepeatTypes
       selectWeekDays.value = response.data.weekDays
