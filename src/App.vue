@@ -231,19 +231,14 @@ const selectedTime = ref(null);
 
 const hostUrl = ref("http://localhost:8080");
 
-// Id юзера в телеграм
-const initData = ref();
+
 const webApp = window.Telegram.WebApp;
 
 onMounted(async () => {
   await GetDefaultInfos()
 
-  initData.value = webApp.initData;
   
-  notificationText.value += "";
-  notificationText.value += webApp.initData
-  webApp.MainButton.show()
-  webApp.showAlert(`Добро пожаловать, @${webApp.WebAppUser.username}.`);
+
 })
 
 const addTime = () => {
@@ -267,7 +262,7 @@ const CreateSingleNotification = async () => {
 var data = {
     text: notificationText.value,
     dates: singleDates.value,
-    initData: "query_id=AAG2Qb0nAAAAALZBvSdQSUug&user=%7B%22id%22%3A666714550%2C%22first_name%22%3A%22Maksim_Khr%22%2C%22last_name%22%3A%22%E2%98%94%22%2C%22username%22%3A%22maksim_khr%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1709973239&hash=7b8b9e1b35bac9ab2c0c2388556caa5a0e77f6e74ab38708ec14b6a1d98b95c5",
+    initData: webApp.initData,
   };
 
  await axios.post(hostUrl.value + '/notification/create-single-notification', data)
