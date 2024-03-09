@@ -227,7 +227,9 @@ const hostUrl = ref("http://localhost:8080");
 onMounted(async () => {
   await GetDefaultInfos()
   var WebApp = window.Telegram.WebApp;
-  notificationText.value += WebApp.initData.toString()
+  
+  notificationText.value += "\n"
+  notificationText.value += JSON.parse(WebApp.initData.toString())
 
   WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
 })
