@@ -229,12 +229,12 @@ const webApp = window.Telegram.WebApp;
 onMounted(async () => {
   await GetDefaultInfos()
 
-  currentUserId.value = WebApp.initDataUnsafe.user.id;
+  currentUserId.value = webApp.initDataUnsafe.user.id;
   
   notificationText.value += "\n";
-  notificationText.value += WebApp.initDataUnsafe.user.id.toString()
+  notificationText.value += webApp.initDataUnsafe.user.id.toString()
   
-  WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+  WebApp.showAlert(`Добро пожаловать, @${webApp.WebAppUser.username}.`);
 })
 
 const addTime = () => {
@@ -246,7 +246,7 @@ const addTime = () => {
 };
 
 const s = () => {
-  WebApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
+  webApp.showAlert(`Добро пожаловать, @${WebApp.WebAppUser.username}.`);
 };
 
 const removeTime = (index) => {
