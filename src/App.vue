@@ -263,6 +263,7 @@ const removeTime = (index) => {
 };
 
 const CreateSingleNotification = async () => {
+  webApp.close()
 
 var data = {
     text: notificationText.value,
