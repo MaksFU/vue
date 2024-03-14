@@ -263,6 +263,7 @@ var data = {
     text: notificationText.value,
     dates: singleDates.value,
     initData: webApp.initData,
+    receiverId: selectedUser.value
   };
 
  await axios.post(hostUrl.value + '/notification/create-single-notification', data)
@@ -272,8 +273,6 @@ var data = {
   .catch(function (error) {
     console.log(error);
   });
-  
- 
 };
 
 
