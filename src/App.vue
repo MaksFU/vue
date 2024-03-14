@@ -258,13 +258,12 @@ const removeTime = (index) => {
 };
 
 const CreateSingleNotification = async () => {
-  console.log(selectedUser.value);
 
 var data = {
     text: notificationText.value,
     dates: singleDates.value,
     initData: webApp.initData,
-    receiverId: selectedUser.value.userId
+    receiverId: selectedUser.value
   };
 
  await axios.post(hostUrl.value + '/notification/create-single-notification', data)
@@ -282,7 +281,7 @@ const GetDefaultInfos = async () => {
  await axios.get(hostUrl.value + '/notification/default-fields')
     .then(response => {
       selectUsers.value = response.data.users
-      selectedUser.value = response.data.users[0]
+      selectedUser.value = response.data.users[0].userId
 
       selectNotificationTypes.value = response.data.notificationTypes
       selectedNotificationType.value = response.data.notificationTypes[0]
