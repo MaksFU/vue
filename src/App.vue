@@ -229,7 +229,7 @@ const times = ref([]);
 const selectedTime = ref(null);
 
 
-const hostUrl = ref("http://localhost:8080");
+const hostUrl = ref("https://testdeplbotm.ru");
 
 
 const webApp = window.Telegram.WebApp;
