@@ -258,7 +258,7 @@ const removeTime = (index) => {
 };
 
 const CreateSingleNotification = async () => {
-  console.log(selectedUser);
+  console.log(selectedUser.value);
 
 var data = {
     text: notificationText.value,
