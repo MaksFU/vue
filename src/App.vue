@@ -270,7 +270,7 @@ const notificationText = ref();
 const webApp = window.Telegram.WebApp;
 
 // Backend url
-const hostUrl = ref("http://localhost:8080");
+const hostUrl = ref("https://testdeplbotm.ru");
 const showError = ref(false);
 const errorText = ref();
 
