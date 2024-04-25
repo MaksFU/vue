@@ -478,4 +478,4 @@ const GetDefaultInfos = async () => {
       console.error(error);
     });
 
-};
+};</script>
